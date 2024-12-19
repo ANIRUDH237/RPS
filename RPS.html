@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width" initial-scale="1.0">
+        <link rel="stylesheet" href="style.css">
+
+
+    </head>
+    <body>
+        <h1>Rock-paper-scissors</h1>
+        <div id ="choices">
+            <button onclick="playGame('rock')">👊</button>
+            <button onclick="playGame('paper')">🖐️</button>
+            <button onclick="playGame('scissors')">✌️</button>
+
+        </div>
+       <div id ="playerdisplay">Player:</div>
+       <div id ="computerdisplay">Computer:</div>
+       <div id ="result"></div>
+       <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: large;
+            background-color:white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        </style>
+        <style>
+        .choices{
+            margin bottom: 30px;
+
+        }
+        .choices button{
+            font-size: 7.5rem;
+            min-width: 160px;
+            border-radius: 200px;
+            background-color: aliceblue;
+        }
+        .choices button:hover{
+            background-color: yellowgreen;
+        }
+       </style>
+       <script>
+        const choices = ["rock","paper","scissors"];
+        const playerdisplay=document.getElementById("playerdisplay");
+        const computerdisplay=document.getElementById("computerdisplay");
+        const resultdisplay=document.getElementById("result");
+
+        function playGame(playerchoice){
+            const computerchoice = choices[Math.floor(Math.random()*3)];
+             console.log(computerchoice)
+             let result = "";
+             if(playerchoice===computerchoice){
+                result = "ITS A TIE";
+
+             }
+             else {
+                switch(playerchoice){
+                    case "rock":
+                     result = (computerchoice==="scissors") ? "you win":"you lost";
+                     break;
+                     case "paper":
+                     result = (computerchoice==="rock") ? "you win":"you lost";
+                     break;
+                     case "scissors":
+                     result = (computerchoice==="paper") ? "you win":"you lost";
+                     break;
+
+                }
+               
+
+             }
+             playerdisplay.textContent=`Player:${playerchoice}`;
+             computerdisplay.textContent=`Computer:${computerchoice}`;
+             resultdisplay.textContent=result;
+
+
+        }
+       </script>
+
+
+    </body>
+</html>
